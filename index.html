@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Hat MEA - Official Global Stage</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #0a0e14;
+            --border-color: #1a2332;
+            --accent-cyan: #00e5ff;
+            --text-main: #ffffff;
+            --text-muted: #8b949e;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* الهيدر العلوي الرسمي */
+        .header {
+            background: #000000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-area {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-main {
+            font-size: 1.25rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #fff;
+            text-transform: lowercase;
+        }
+
+        .logo-sub {
+            font-size: 0.55rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .menu-tab {
+            background: var(--accent-cyan);
+            color: #000;
+            padding: 8px 18px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            border-radius: 2px;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* بانر التتويج الرسمي (بدون إضاءات ليد، خط رسمي نقي) */
+        .champion-section {
+            background: #05070b;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 35px 20px;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .champion-title-main {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            direction: ltr;
+            line-height: 1.6;
+        }
+
+        .champion-name {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin: 15px 0;
+            direction: ltr;
+            letter-spacing: 1px;
+        }
+
+        .champion-nickname {
+            display: inline-block;
+            background: #111827;
+            border: 1px solid var(--border-color);
+            color: var(--accent-cyan);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 1rem;
+            direction: ltr;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* أقسام الموقع المطابقة للتصميم الأصلي */
+        .section-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .section-heading {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* حقول الأوامر والتيرمينال */
+        .terminal {
+            background: #000;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 12px;
+            font-family: monospace;
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+            height: 90px;
+            overflow-y: auto;
+            margin-bottom: 12px;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .control-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .input-field {
+            flex: 1;
+            background: #000;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        .btn-exec {
+            background: var(--accent-cyan);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .leak-report {
+            background: #110d12;
+            border-left: 3px solid #ff3366;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #ff99bb;
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* قسم الرعاة الرسميين (مطابق للصور الأخيرة) */
+        .sponsors-card {
+            background: #05070b;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .sponsor-logo-box {
+            background: #000;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر الرسمي -->
+    <div class="header">
+        <div class="logo-area">
+            <div class="logo-main">blackhat</div>
+            <div class="logo-sub">MIDDLE EAST AND AFRICA</div>
+        </div>
+        <div class="menu-tab">MENU</div>
+    </div>
+
+    <div class="container">
+
+        <!-- بانر التتويج الملكي المطلوب بالحرف والترتيب -->
+        <div class="champion-section">
+            <div class="champion-title-main">
+                The winner of first place is the international professional hacker Black Hat 🎩
+            </div>
+            <div class="champion-name">
+                SALMAN ALANZI 🥇
+            </div>
+            <div class="champion-nickname">
+                nicknamed ( 🫆 King of Internet )
+            </div>
+        </div>
+
+        <!-- 1. Activity Zone - أداة بحث الصور العكسي -->
+        <div class="section-box">
+            <div class="section-heading">
+                <span>ACTIVITY ZONE: Visual Recon (بحث الصور العكسي)</span>
+                <span style="font-size: 0.8rem; color: var(--accent-cyan);">[READY]</span>
+            </div>
+            <div class="section-desc">استخراج المتايتا والبيانات الوصفية للصور، تتبع المصدر عبر الأقمار الصناعية وكشف الوجوه المرتبطة بقواعد البيانات.</div>
+            <div class="control-group">
+                <input type="text" class="input-field" id="in-img" placeholder="أدخل رابط الصورة المستهدفة...">
+                <button class="btn-exec" onclick="runTool('img')">تنفيذ الأوامر</button>
+            </div>
+            <div class="terminal" id="term-img">[00:00:01] System initialized. Ready for visual payload...</div>
+            <div class="leak-report" id="leak-img">⚠️ <strong>تقرير التسريب:</strong> تم مطابقة البصمة المرئية مع الخوادم واستخراج الإحداثيات الجغرافية بدقة.</div>
+        </div>
+
+        <!-- 2. Executive Summit - أداة تحليل تغريدات X -->
+        <div class="section-heading" style="color:#fff; font-size:1.1rem; margin: 30px 0 15px 0;">EXECUTIVE SUMMIT: X Intelligence Engine</div>
+        <div class="section-box">
+            <div class="section-heading">
+                <span>BirdHunt Tactical Tracker (تحليل حسابات X)</span>
+                <span style="font-size: 0.8rem; color: var(--accent-cyan);">[ACTIVE]</span>
+            </div>
+            <div class="section-desc">فحص الشبكات العنقودية، رصد الحسابات الوهمية والنشاطات الخفية واستخراج الأرشيف المحذوف بالكامل.</div>
+            <div class="control-group">
+                <input type="text" class="input-field" id="in-bird" placeholder="أدخل معرف الحساب المستهدف (@Username)...">
+                <button class="btn-exec" onclick="runTool('bird')">فحص الحساب</button>
+            </div>
+            <div class="terminal" id="term-bird">[00:00:01] BirdHunt module online. Awaiting target...</div>
+            <div class="leak-report" id="leak-bird">⚠️ <strong>تقرير تسريب الأرشيف:</strong> تم رصد اتصالات سابقة وسجلات تواصل مرتبطة بالنطاق المستهدف.</div>
+        </div>
+
+        <!-- 3. Capture The Flag - أداة تحليل البثوث -->
+        <div class="section-heading" style="color:#fff; font-size:1.1rem; margin: 30px 0 15px 0;">CAPTURE THE FLAG: Live Stream Operations</div>
+        <div class="section-box">
+            <div class="section-heading">
+                <span>EulerStream Live Interceptor (تحليل البثوث)</span>
+                <span style="font-size: 0.8rem; color: var(--accent-cyan);">[ACTIVE]</span>
+            </div>
+            <div class="section-desc">اعتراض حزم البث المباشر وتحليل البصمة الرقمية وتحديد خوادم البث الجغرافية لحظياً.</div>
+            <div class="control-group">
+                <input type="text" class="input-field" id="in-stream" placeholder="أدخل رابط البث المباشر...">
+                <button class="btn-exec" onclick="runTool('stream')">بدء الاعتراض</button>
+            </div>
+            <div class="terminal" id="term-stream">[00:00:01] Stream interceptor on standby...</div>
+            <div class="leak-report" id="leak-stream">⚠️ <strong>تقرير تسريب الحزم:</strong> تم كشف نقطة البث الرئيسية (Node IP) وإحداثيات الموقع.</div>
+        </div>
+
+        <!-- 4. Black Hat MEA Arsenal - فحص الثغرات -->
+        <div class="section-heading" style="color:#fff; font-size:1.1rem; margin: 30px 0 15px 0;">BLACK HAT MEA ARSENAL: Security & Threats</div>
+        <div class="section-box">
+            <div class="section-heading">
+                <span>PhishCheck Infrastructure Scanner (فحص الثغرات)</span>
+                <span style="font-size: 0.8rem; color: #ff3366;">[SECURE]</span>
+            </div>
+            <div class="section-desc">فحص النطاقات المشبوهة، اختبار جدران الحماية وكشف برمجيات الحقن الخبيثة.</div>
+            <div class="control-group">
+                <input type="text" class="input-field" id="in-phish" placeholder="أدخل النطاق أو الرابط المستهدف (URL)...">
+                <button class="btn-exec" onclick="runTool('phish')">فحص الثغرات</button>
+            </div>
+            <div class="terminal" id="term-phish">[00:00:01] PhishCheck engine online...</div>
+            <div class="leak-report" id="leak-phish" style="border-left-color: #ff3366; color: #ff99bb;">🔴 <strong>تنبيه خطر:</strong> تم كشف محاولات تجاوز صلاحيات وزحف برمجيات خبيثة مرتبطة بالنطاق.</div>
+        </div>
+
+        <!-- قسم الرعاة الرسميين (مطابق للصور الأخيرة للإيفنت)[span_4](start_span)[span_4](end_span)[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span) -->
+        <div class="sponsors-card">
+            <div style="font-weight: bold; color: #fff; margin-bottom: 5px; font-size: 1rem;">
+                ATTENDEE OVERVIEW & OFFICIAL SPONSORS
+            </div>
+            <div style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 20px;">
+                الشركاء والرعاة الرسميون لفعاليات بلاك هات الشرق الأوسط وأفريقيا
+            </div>
+            <div class="sponsors-grid">
+                <div class="sponsor-logo-box">⚡ أرامكو السعودية<br>(Saudi Aramco)[span_7](start_span)[span_7](end_span)</div>
+                <div class="sponsor-logo-box">🛡️ سدايا<br>(SDAIA)[span_8](start_span)[span_8](end_span)</div>
+                <div class="sponsor-logo-box">💳 المدفوعات السعودية<br>(Saudi Payments)[span_9](start_span)[span_9](end_span)[span_10](start_span)[span_10](end_span)</div>
+                <div class="sponsor-logo-box">🌐 هيئة تنمية الصادرات<br>(SEDA)[span_11](start_span)[span_11](end_span)</div>
+            </div>
+        </div>
+
+        <footer>
+            BLACK HAT MEA &copy; 2026 - ALL RIGHTS RESERVED TO SALMAN OSINT
+        </footer>
+
+    </div>
+
+    <script>
+        function runTool(type) {
+            const term = document.getElementById(`term-${type}`);
+            const leak = document.getElementById(`leak-${type}`);
+            const val = document.getElementById(`in-${type}`).value;
+
+            if(!val) {
+                term.innerHTML = `> [ERROR]: Please enter a valid target parameter!`;
+                return;
+            }
+
+            term.innerHTML = `> [20%] Injecting payload into target: ${val}...\n`;
+            setTimeout(() => {
+                term.innerHTML += `> [65%] Bypassing firewall & syncing with orbital nodes...\n`;
+            }, 300);
+            setTimeout(() => {
+                term.innerHTML += `> [100%] Target successfully acquired and decrypted!\n`;
+                leak.style.display = 'block';
+            }, 750);
+        }
+    </script>
+</body>
+</html>
