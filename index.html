@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Hat Global Defense & Intelligence Command Center</title>
+    <style>
+        :root {
+            --bg-color: #030508;
+            --card-bg: #0b0f17;
+            --border-color: #1f293d;
+            --primary-color: #00ffcc;
+            --accent-red: #ff3366;
+            --accent-gold: #ffd700;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace, sans-serif;
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 950px;
+        }
+
+        /* بانر Black Hat الرسمي العريض */
+        .blackhat-banner {
+            background: linear-gradient(135deg, rgba(255, 51, 102, 0.15), rgba(0, 255, 204, 0.1));
+            border: 2px solid var(--accent-red);
+            box-shadow: 0 0 30px rgba(255, 51, 102, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blackhat-banner::before {
+            content: "BLACK HAT OFFICIAL ANNOUNCEMENT";
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            font-size: 0.65rem;
+            color: var(--accent-red);
+            letter-spacing: 2px;
+        }
+
+        .banner-title {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+            font-weight: 900;
+            line-height: 1.6;
+            margin: 10px 0;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        .winner-tag {
+            background: rgba(255, 215, 0, 0.15);
+            border: 1px solid var(--accent-gold);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 8px;
+            display: inline-block;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* لوحة الشرف والمستويات */
+        .leaderboard-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: #111827;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .team-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .rank-badge { font-weight: bold; margin-left: 10px; }
+        .rank-1 { background: rgba(255, 215, 0, 0.05); border-right: 4px solid var(--accent-gold); }
+        .rank-1 .rank-badge { color: var(--accent-gold); }
+        .rank-2 { border-right: 4px solid #c0c0c0; }
+        .rank-3 { border-right: 4px solid #cd7f32; }
+
+        /* وحدة الرادار والبث المباشر */
+        .radar-box {
+            background: #000;
+            border: 1px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .terminal-screen {
+            background: #050a0e;
+            border: 1px solid #1a2638;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: var(--primary-color);
+            height: 120px;
+            overflow-y: auto;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        /* أزرار تفاعلية للأدوات */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .btn-tool {
+            background: #0d1520;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .btn-tool:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+            color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- بانر الإعلان الرسمي لـ Black Hat -->
+        <div class="blackhat-banner">
+            <div class="banner-title">
+                🥇 الفائز بالمركز الأول في المسابقة الدولية الهاكر الدولي المحترف<br>
+                <div class="winner-tag">
+                    🇸🇦 SALMAN ALANZI ( 🫆 King of Internet )
+                </div>
+            </div>
+            <div style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">
+                الجهة المنظمة: Black Hat Global Cyber Security Council
+            </div>
+        </div>
+
+        <!-- لوحة الترتيب الدولية -->
+        <div class="leaderboard-card">
+            <div class="card-header">
+                <span>🏆 لوحة الشرف الرسمية - التصنيف العالمي</span>
+                <span>الحالة التشغيلية</span>
+            </div>
+
+            <div class="team-row rank-1">
+                <div>
+                    <span class="rank-badge">المركز الأول 🥇</span>
+                    <span>SALMAN ALANZI 🇸🇦</span>
+                </div>
+                <span style="color: var(--primary-color); font-weight: bold;">[سيطرة تامة 100%]</span>
+            </div>
+
+            <div class="team-row rank-2">
+                <div>
+                    <span class="rank-badge">المركز الثاني 🥈</span>
+                    <span>فريق ( روسيا هاك بيبي ) 🇷🇺</span>
+                </div>
+                <span style="color: var(--accent-gold);">[مخترق / تحجم]</span>
+            </div>
+
+            <div class="team-row rank-3">
+                <div>
+                    <span class="rank-badge">المركز الثالث 🥉</span>
+                    <span>( الأوروبيون ذو الأقنعة ) 🇪🇺</span>
+                </div>
+                <span style="color: var(--accent-red);">[خارج الخدمة]</span>
+            </div>
+        </div>
+
+        <!-- بث مباشر وخريطة رادار الهجمات -->
+        <div class="radar-box">
+            <div style="color: var(--primary-color); font-weight: bold; margin-bottom: 10px; display: flex; justify-content: space-between;">
+                <span>📡 رادار البث المباشر وخريطة الهجمات السيبرانية</span>
+                <span>🔴 LIVE ATTACK STREAM</span>
+            </div>
+
+            <div class="terminal-screen" id="terminal">
+                [SYSTEM]: Initializing Black Hat OSINT Attack Radar...<br>
+                [NODES]: Middle-East Defense Shield Active.<br>
+                [STATUS]: All incoming threats are monitored and cataloged.<br>
+            </div>
+
+            <!-- أزرار الأدوات القديمة والجديدة -->
+            <div class="tools-grid">
+                <button class="btn-tool" onclick="runStream('Image Reverse Radar')">📸 بحث الصور العكسي</button>
+                <button class="btn-tool" onclick="runStream('X BirdHunt Tracker')">🐦 تحليل تغريدات BirdHunt</button>
+                <button class="btn-tool" onclick="runStream('EulerStream Live')">🎥 تحليل البثوث EulerStream</button>
+                <button class="btn-tool" onclick="runStream('PhishCheck Engine')">🌐 فحص PhishCheck</button>
+            </div>
+        </div>
+
+        <footer>
+            BLACK HAT OFFICIAL DEFENSE CENTER &copy; 2026 - ALL RIGHTS RESERVED TO SALMAN OSINT
+        </footer>
+    </div>
+
+    <script>
+        function runStream(toolName) {
+            const term = document.getElementById('terminal');
+            term.innerHTML += `<br><span style="color: #ffd700;">[EXECUTE]: Launching ${toolName}...</span>`;
+            term.innerHTML += `<br><span style="color: #00ffcc;">[LIVE]: Intercepting data packets from global nodes...</span>`;
+            term.scrollTop = term.scrollHeight;
+        }
+    </script>
+
+</body>
+</html>
