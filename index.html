@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Hat MEA - SALMAN OSINT Intelligence Command Center</title>
+    <title>Black Hat MEA - SALMAN OSINT Command Center</title>
     <style>
         :root {
-            --bg-main: #020408;
-            --card-bg: #070c14;
-            --border-color: #121c2d;
+            --bg-main: #010306;
+            --card-bg: rgba(8, 13, 22, 0.9);
+            --border-color: #121d2d;
             --cyan-glow: #00f0ff;
             --red-glow: #ff0055;
             --gold-color: #ffd700;
@@ -21,46 +21,45 @@
         body {
             background-color: var(--bg-main);
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.05), transparent 70%),
-                linear-gradient(180deg, rgba(2, 4, 8, 0.95) 0%, rgba(5, 8, 15, 0.98) 100%);
+                radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.04), transparent 70%),
+                linear-gradient(180deg, rgba(1, 3, 6, 0.98) 0%, rgba(4, 7, 14, 0.99) 100%);
             color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* الهيدر العلوي الرسمي لـ Black Hat */
+        /* الهيدر العلوي */
         .header-bar {
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.92);
             border-bottom: 1px solid var(--border-color);
-            padding: 15px 25px;
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
         }
 
         .logo-box {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo-hat {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             background: var(--cyan-glow);
             clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-            display: inline-block;
         }
 
         .logo-text {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             font-weight: 900;
             color: #fff;
             letter-spacing: 1px;
@@ -68,112 +67,99 @@
         }
 
         .logo-sub {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: var(--cyan-glow);
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
         .nav-tag {
             background: var(--cyan-glow);
             color: #000;
-            padding: 6px 16px;
+            padding: 5px 14px;
             font-weight: bold;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             border-radius: 3px;
-            letter-spacing: 1px;
         }
 
         .container {
-            max-width: 950px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
         }
 
-        /* بانر التتويج الملكي */
+        /* بانر المتصدرين الملكي (خط مصغر ورسمي) */
         .hero-champion {
-            background: rgba(10, 15, 25, 0.8);
+            background: rgba(8, 12, 20, 0.85);
             border: 1px solid var(--border-color);
-            border-top: 3px solid var(--gold-color);
-            border-radius: 10px;
-            padding: 30px 20px;
+            border-right: 3px solid var(--gold-color);
+            border-radius: 6px;
+            padding: 18px 15px;
             text-align: center;
-            margin: 20px 0 35px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            margin: 15px 0 25px 0;
         }
 
         .champ-title {
-            font-size: 1.05rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             direction: ltr;
-            margin-bottom: 12px;
-            font-weight: 600;
+            margin-bottom: 6px;
         }
 
         .champ-name {
-            font-size: 1.8rem;
-            font-weight: 900;
+            font-size: 1.15rem;
+            font-weight: 800;
             color: #ffffff;
             direction: ltr;
-            letter-spacing: 1.5px;
-            margin: 10px 0;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            letter-spacing: 1px;
+            margin: 4px 0;
         }
 
         .champ-badge {
             display: inline-block;
-            background: rgba(0, 240, 255, 0.08);
-            border: 1px solid var(--cyan-glow);
+            background: rgba(0, 240, 255, 0.06);
+            border: 1px solid var(--border-color);
             color: var(--cyan-glow);
-            padding: 8px 20px;
-            border-radius: 6px;
-            font-size: 1rem;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
             direction: ltr;
-            font-weight: 700;
-            margin-top: 10px;
+            margin-top: 6px;
         }
 
-        /* عنوان الأقسام */
         .section-title {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             font-weight: bold;
             color: #fff;
-            margin: 35px 0 20px 0;
+            margin: 25px 0 15px 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .section-title::before {
             content: '';
-            width: 4px;
-            height: 20px;
+            width: 3px;
+            height: 16px;
             background: var(--cyan-glow);
-            display: inline-block;
         }
 
-        /* بطاقة الأداة الاستخباراتية */
+        /* بطاقات الأدوات */
         .tool-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 25px;
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 20px;
             display: flex;
-            gap: 20px;
+            gap: 15px;
             position: relative;
             overflow: hidden;
-            transition: border-color 0.3s;
         }
 
-        .tool-card:hover {
-            border-color: var(--cyan-glow);
-        }
-
-        /* البانر الجانبي الصغير باليمين لكل أداة */
         .tool-sidebar-banner {
-            width: 8px;
-            border-radius: 4px;
+            width: 6px;
+            border-radius: 3px;
             background: var(--cyan-glow);
             flex-shrink: 0;
         }
@@ -187,11 +173,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .tool-name-code {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: bold;
             color: #fff;
         }
@@ -200,37 +186,23 @@
             background: rgba(0, 240, 255, 0.1);
             color: var(--cyan-glow);
             border: 1px solid var(--cyan-glow);
-            font-size: 0.75rem;
-            padding: 2px 8px;
-            border-radius: 4px;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 3px;
             font-family: monospace;
         }
 
         .tool-info-text {
             color: var(--text-muted);
-            font-size: 0.88rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .terminal-box {
-            background: #000;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 12px;
-            font-family: 'Courier New', monospace;
-            color: var(--cyan-glow);
-            font-size: 0.8rem;
-            height: 95px;
-            overflow-y: auto;
+            font-size: 0.82rem;
+            line-height: 1.5;
             margin-bottom: 12px;
-            direction: ltr;
-            text-align: left;
         }
 
         .action-row {
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            margin-bottom: 10px;
         }
 
         .input-target {
@@ -238,92 +210,138 @@
             background: #020408;
             border: 1px solid var(--border-color);
             color: #fff;
-            padding: 11px 14px;
-            border-radius: 6px;
+            padding: 9px 12px;
+            border-radius: 4px;
             font-family: monospace;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         .btn-discover {
             background: var(--cyan-glow);
             color: #000;
             border: none;
-            padding: 11px 22px;
+            padding: 9px 16px;
             font-weight: bold;
-            border-radius: 6px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 0.85rem;
-            transition: 0.2s;
+            font-size: 0.8rem;
         }
 
-        .btn-discover:hover {
-            opacity: 0.9;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        /* خريطة تتبع تفاعلية وحية (Satellite Tracking Map) */
+        .map-tracker {
+            height: 110px;
+            background: #010408;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+            display: none;
+        }
+
+        .map-grid-overlay {
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
+            background-size: 20px 20px;
+            position: absolute;
+            top: 0; left: 0;
+        }
+
+        .map-ping {
+            width: 10px;
+            height: 10px;
+            background: var(--red-glow);
+            border-radius: 50%;
+            position: absolute;
+            top: 45%; left: 55%;
+            box-shadow: 0 0 15px var(--red-glow);
+            animation: pulse 1.2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        .map-coordinates {
+            position: absolute;
+            bottom: 6px;
+            right: 8px;
+            font-size: 0.68rem;
+            color: var(--cyan-glow);
+            font-family: monospace;
+            background: rgba(0,0,0,0.7);
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+
+        .terminal-box {
+            background: #000;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            color: var(--cyan-glow);
+            font-size: 0.78rem;
+            height: 85px;
+            overflow-y: auto;
+            direction: ltr;
+            text-align: left;
         }
 
         .leak-result {
             background: rgba(255, 0, 85, 0.08);
             border-right: 3px solid var(--red-glow);
-            padding: 12px;
+            padding: 10px;
             border-radius: 4px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #ff99bb;
             display: none;
-            margin-top: 12px;
+            margin-top: 10px;
         }
 
-        /* قسم الرعاة الرسميين */
+        /* الرعاة الرسميون */
         .sponsors-container {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 25px;
+            border-radius: 8px;
+            padding: 20px;
             text-align: center;
-            margin-top: 40px;
-        }
-
-        .sponsors-title {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 5px;
-        }
-
-        .sponsors-sub {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
+            margin-top: 30px;
         }
 
         .sponsors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
         }
 
         .sponsor-box {
-            background: #020408;
+            background: #010306;
             border: 1px solid var(--border-color);
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 0.85rem;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
             color: var(--text-main);
             font-weight: 600;
         }
 
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 20px;
             color: var(--text-muted);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             border-top: 1px solid var(--border-color);
-            margin-top: 40px;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
 
-    <!-- الشريط العلوي لشعار Black Hat MEA -->
     <div class="header-bar">
         <div class="logo-box">
             <div class="logo-hat"></div>
@@ -337,7 +355,7 @@
 
     <div class="container">
 
-        <!-- بانر التتويج الملكي -->
+        <!-- المتصدرين بخط مصغر ورسمي -->
         <div class="hero-champion">
             <div class="champ-title">
                 The winner of first place is the international professional hacker Black Hat 🎩
@@ -351,10 +369,10 @@
         </div>
 
         <div class="section-title">
-            مختبر الاستكشاف والاختراق المتقدم (OSINT LABS)
+            مختبرات الاستكشاف والاستخبارات الرقمية (OSINT RADAR LABS)
         </div>
 
-        <!-- أداة 1: Visual Recon -->
+        <!-- أداة 1: V-RECON -->
         <div class="tool-card">
             <div class="tool-sidebar-banner"></div>
             <div class="tool-content">
@@ -363,20 +381,26 @@
                     <span class="tool-short-tag">V-RECON</span>
                 </div>
                 <div class="tool-info-text">
-                    أداة فحص واستكشاف الصور العكسية العالية الدقة، استخراج الميتا داتا الوصفية، مطابقة البصمة المرئية وتحديد الإحداثيات الجغرافية لمصدر الصورة عبر عقد الأقمار الصناعية.
+                    استكشاف واستخراج البيانات الوصفية المرئية، مطابقة الوجوه والبصمة الرقمية وتحديد موقع التقاط الصورة الجغرافي.
                 </div>
                 <div class="action-row">
-                    <input type="text" class="input-target" id="in-vrecon" placeholder="أدخل رابط الصورة أو الهدف للاستكشاف...">
-                    <button class="btn-discover" onclick="startExecution('vrecon')">[ استكشاف واستخراج البيانات ]</button>
+                    <input type="text" class="input-target" id="in-vrecon" placeholder="أدخل رابط الصورة المستهدفة...">
+                    <button class="btn-discover" onclick="executeRealHack('vrecon')">[ استكشاف وتحليل البيانات ]</button>
                 </div>
-                <div class="terminal-box" id="term-vrecon">> [SYSTEM]: Visual-Recon engine ready. Standing by for payload...</div>
+                <!-- خريطة التتبع -->
+                <div class="map-tracker" id="map-vrecon">
+                    <div class="map-grid-overlay"></div>
+                    <div class="map-ping"></div>
+                    <div class="map-coordinates" id="coord-vrecon">LAT: 24.7136 | LONG: 46.6753 [TARGET ACQUIRED]</div>
+                </div>
+                <div class="terminal-box" id="term-vrecon">> [SYSTEM]: Visual-Recon engine active. Awaiting image target...</div>
                 <div class="leak-result" id="leak-vrecon">
-                    ⚠️ <strong>تقرير استكشاف التسريب:</strong> تم رصد مطابقة بصريّة مع خوادم خارجية واستخراج بيانات EXIF الجغرافية للهدف.
+                    ⚠️ <strong>تقرير استكشاف التسريب:</strong> تم مطابقة الصورة مع خوادم الأقمار الصناعية واستخراج الإحداثيات الدقيقة للهدف.
                 </div>
             </div>
         </div>
 
-        <!-- أداة 2: BirdHunt -->
+        <!-- أداة 2: X-TRACK -->
         <div class="tool-card">
             <div class="tool-sidebar-banner banner-gold"></div>
             <div class="tool-content">
@@ -385,20 +409,25 @@
                     <span class="tool-short-tag">X-TRACK</span>
                 </div>
                 <div class="tool-info-text">
-                    مظلة التتبع والاستخبارات الخاصة بحسابات منصة X، تحليل الشبكات العنقودية، سحب الأرشيف المحذوف، واكتشاف اتصالات الحسابات الوهمية المخفية.
+                    تحليل الشبكات العنقودية لحسابات X، سحب التغريدات والأرشيف المحذوف، وكشف الحسابات الخفية المرتبطة.
                 </div>
                 <div class="action-row">
                     <input type="text" class="input-target" id="in-xtrack" placeholder="أدخل معرف الحساب المستهدف (@Username)...">
-                    <button class="btn-discover" onclick="startExecution('xtrack')">[ تتبع وسحب الأرشيف ]</button>
+                    <button class="btn-discover" onclick="executeRealHack('xtrack')">[ تتبع وسحب الأرشيف ]</button>
                 </div>
-                <div class="terminal-box" id="term-xtrack">> [SYSTEM]: X-Track tactical engine initialized. Awaiting user input...</div>
+                <div class="map-tracker" id="map-xtrack">
+                    <div class="map-grid-overlay"></div>
+                    <div class="map-ping"></div>
+                    <div class="map-coordinates" id="coord-xtrack">NODE: X-SERVER-US-EAST [DECRYPTING HANDSHAKE]</div>
+                </div>
+                <div class="terminal-box" id="term-xtrack">> [SYSTEM]: X-Track tactical engine initialized. Ready for target handle...</div>
                 <div class="leak-result" id="leak-xtrack">
-                    ⚠️ <strong>تقرير تسريب الأرشيف:</strong> تم العثور على سجلات اتصالات سابقة وتسريبات مرتبطة بالحساب المستهدف.
+                    ⚠️ <strong>تقرير تسريب الأرشيف:</strong> تم العثور على سجل اتصالات محذوف وتسريبات مرتبطة بالمعرف المستهدف.
                 </div>
             </div>
         </div>
 
-        <!-- أداة 3: EulerStream -->
+        <!-- أداة 3: ESTREAM -->
         <div class="tool-card">
             <div class="tool-sidebar-banner"></div>
             <div class="tool-content">
@@ -407,20 +436,25 @@
                     <span class="tool-short-tag">ESTREAM</span>
                 </div>
                 <div class="tool-info-text">
-                    رادار اعتراض حزم البث المباشر الرقمية، تحليل البصمة الصوتية والمرئية، وتحديد الموقع الجغرافي وخوادم البث المباشرة (Node IP) بدقة عالية.
+                    اعتراض حزم البث المباشر الرقمية، تحليل المصدر وتحديد خوادم البث المباشرة (Node IP) والموقع الجغرافي.
                 </div>
                 <div class="action-row">
-                    <input type="text" class="input-target" id="in-estream" placeholder="أدخل رابط البث المباشر للمراقبة...">
-                    <button class="btn-discover" onclick="startExecution('estream')">[ اعتراض البث وتحديد الموقع ]</button>
+                    <input type="text" class="input-target" id="in-estream" placeholder="أدخل رابط البث المباشر...">
+                    <button class="btn-discover" onclick="executeRealHack('estream')">[ اعتراض البث والتتبع ]</button>
                 </div>
-                <div class="terminal-box" id="term-estream">> [SYSTEM]: EulerStream ready for real-time video intercept...</div>
+                <div class="map-tracker" id="map-estream">
+                    <div class="map-grid-overlay"></div>
+                    <div class="map-ping"></div>
+                    <div class="map-coordinates" id="coord-estream">STREAM NODE: 185.220.101.4 | PORT: 8080</div>
+                </div>
+                <div class="terminal-box" id="term-estream">> [SYSTEM]: EulerStream ready for live video payload analysis...</div>
                 <div class="leak-result" id="leak-estream">
-                    ⚠️ <strong>تقرير تسريب البث:</strong> تم تحديد عنوان IP للخادم المزود واعتراض 4.2 GB/s من حزم البيانات.
+                    ⚠️ <strong>تقرير تسريب البث:</strong> تم تحديد IP خادم البث واعتراض حزم الفيديو في الوقت الفعلي.
                 </div>
             </div>
         </div>
 
-        <!-- أداة 4: PhishCheck -->
+        <!-- أداة 4: P-SCAN -->
         <div class="tool-card">
             <div class="tool-sidebar-banner banner-red"></div>
             <div class="tool-content">
@@ -429,23 +463,28 @@
                     <span class="tool-short-tag">P-SCAN</span>
                 </div>
                 <div class="tool-info-text">
-                    أداة فحص الهندسة العكسية واختبار الثغرات، كشف روابط الاحتيال، اختبار مناعة الجدران النارية وسحب سجلات اختراق البنية التحتية.
+                    فحص الهندسة العكسية والثغرات، اختراق مناعة الجدران النارية وسحب سجلات ثغرات البنية التحتية.
                 </div>
                 <div class="action-row">
-                    <input type="text" class="input-target" id="in-pscan" placeholder="أدخل النطاق أو الرابط المستهدف (URL)...">
-                    <button class="btn-discover" onclick="startExecution('pscan')">[ فحص واستكشاف الثغرات ]</button>
+                    <input type="text" class="input-target" id="in-pscan" placeholder="أدخل النطاق المستهدف (URL)...">
+                    <button class="btn-discover" onclick="executeRealHack('pscan')">[ فحص واستكشاف الثغرات ]</button>
                 </div>
-                <div class="terminal-box" id="term-pscan">> [SYSTEM]: PhishCheck vulnerability scanner online...</div>
+                <div class="map-tracker" id="map-pscan">
+                    <div class="map-grid-overlay"></div>
+                    <div class="map-ping"></div>
+                    <div class="map-coordinates" id="coord-pscan">FIREWALL EXPLOIT: BYPASS SUCCESSFUL</div>
+                </div>
+                <div class="terminal-box" id="term-pscan">> [SYSTEM]: PhishCheck vulnerability engine online...</div>
                 <div class="leak-result" id="leak-pscan" style="border-right-color: var(--red-glow);">
-                    🔴 <strong>تنبيه ثغرة خطيرة:</strong> تم اكتشاف برمجيات حقن خبيثة وتجاوز صلاحيات Admin في النطاق المستهدف.
+                    🔴 <strong>تنبيه ثغرة خطيرة:</strong> تم كشف ثغرة حقن خبيثة وتجاوز صلاحيات Admin بنجاح.
                 </div>
             </div>
         </div>
 
-        <!-- قسم الرعاة الرسميين -->
+        <!-- الرعاة الرسميون -->
         <div class="sponsors-container">
-            <div class="sponsors-title">ATTENDEE OVERVIEW & OFFICIAL SPONSORS</div>
-            <div class="sponsors-sub">الشركاء والرعاة الرسميون لفعاليات بلاك هات الشرق الأوسط وأفريقيا</div>
+            <div style="font-size: 0.9rem; font-weight: bold; color: #fff;">ATTENDEE OVERVIEW & OFFICIAL SPONSORS</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">الشركاء والرعاة الرسميون لفعاليات بلاك هات الشرق الأوسط وأفريقيا</div>
             <div class="sponsors-grid">
                 <div class="sponsor-box">⚡ أرامكو السعودية<br>(Saudi Aramco)</div>
                 <div class="sponsor-box">🛡️ سدايا<br>(SDAIA)</div>
@@ -461,27 +500,32 @@
     </div>
 
     <script>
-        function startExecution(key) {
+        function executeRealHack(key) {
             const term = document.getElementById(`term-${key}`);
             const leak = document.getElementById(`leak-${key}`);
+            const map = document.getElementById(`map-${key}`);
             const input = document.getElementById(`in-${key}`).value;
 
             if(!input) {
-                term.innerHTML = `> [ERROR]: Target parameter is missing! Specify target input.`;
+                term.innerHTML = `> [ERROR]: Target parameter is missing! Provide input target.`;
                 return;
             }
 
-            term.innerHTML = `> [05%] Initializing hack payload for: ${input}...\n`;
+            map.style.display = 'block';
+            term.innerHTML = `> [05%] Launching OSINT payload for: ${input}...\n`;
+            
             setTimeout(() => {
-                term.innerHTML += `> [40%] Injecting exploit scripts & bypassing security nodes...\n`;
-            }, 300);
+                term.innerHTML += `> [35%] Syncing with satellite nodes & tracking location...\n`;
+            }, 200);
+
             setTimeout(() => {
-                term.innerHTML += `> [85%] Syncing decrypted data with satellite intelligence...\n`;
-            }, 600);
+                term.innerHTML += `> [70%] Extracting metadata & decrypting secure layers...\n`;
+            }, 450);
+
             setTimeout(() => {
-                term.innerHTML += `> [100%] SUCCESS! Target fully cataloged and decrypted.\n`;
+                term.innerHTML += `> [100%] SUCCESS: Target data cataloged and extracted!\n`;
                 leak.style.display = 'block';
-            }, 900);
+            }, 700);
         }
     </script>
 </body>
