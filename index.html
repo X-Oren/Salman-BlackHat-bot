@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Hat MEA - SALMAN OSINT Ultimate Command Center</title>
+    <style>
+        :root {
+            --bg-main: #010306;
+            --card-bg: rgba(7, 11, 18, 0.95);
+            --border-color: #121d2d;
+            --cyan-glow: #00f0ff;
+            --red-glow: #ff0055;
+            --gold-color: #ffd700;
+            --text-main: #e6edf3;
+            --text-muted: #8b949e;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-main);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.05), transparent 70%),
+                linear-gradient(180deg, rgba(1, 3, 6, 0.98) 0%, rgba(3, 6, 12, 0.99) 100%);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .header-bar {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-hat {
+            width: 28px;
+            height: 28px;
+            background: var(--cyan-glow);
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+        }
+
+        .logo-text {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 1px;
+            text-transform: lowercase;
+        }
+
+        .logo-sub {
+            font-size: 0.55rem;
+            color: var(--cyan-glow);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-tag {
+            background: var(--cyan-glow);
+            color: #000;
+            padding: 5px 14px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            border-radius: 3px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .hero-champion {
+            background: rgba(7, 11, 18, 0.9);
+            border: 1px solid var(--border-color);
+            border-right: 3px solid var(--gold-color);
+            border-radius: 6px;
+            padding: 18px 15px;
+            text-align: center;
+            margin: 15px 0 25px 0;
+        }
+
+        .champ-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            direction: ltr;
+            margin-bottom: 6px;
+        }
+
+        .champ-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #ffffff;
+            direction: ltr;
+            letter-spacing: 1px;
+            margin: 4px 0;
+        }
+
+        .champ-badge {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.06);
+            border: 1px solid var(--border-color);
+            color: var(--cyan-glow);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            direction: ltr;
+            margin-top: 6px;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #fff;
+            margin: 25px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 3px;
+            height: 16px;
+            background: var(--cyan-glow);
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-sidebar-banner {
+            width: 6px;
+            border-radius: 3px;
+            background: var(--cyan-glow);
+            flex-shrink: 0;
+        }
+
+        .banner-red { background: var(--red-glow); }
+        .banner-gold { background: var(--gold-color); }
+
+        .tool-content { flex: 1; }
+
+        .tool-header-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .tool-name-code {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .tool-short-tag {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--cyan-glow);
+            border: 1px solid var(--cyan-glow);
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .tool-info-text {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .input-target {
+            flex: 1;
+            background: #010306;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 9px 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        .btn-discover {
+            background: var(--cyan-glow);
+            color: #000;
+            border: none;
+            padding: 9px 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .map-tracker {
+            height: 110px;
+            background: #000205;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+            display: none;
+        }
+
+        .map-grid-overlay {
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
+            background-size: 20px 20px;
+            position: absolute;
+            top: 0; left: 0;
+        }
+
+        .map-ping {
+            width: 10px;
+            height: 10px;
+            background: var(--red-glow);
+            border-radius: 50%;
+            position: absolute;
+            top: 45%; left: 55%;
+            box-shadow: 0 0 15px var(--red-glow);
+            animation: pulse 1.2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        .map-coordinates {
+            position: absolute;
+            bottom: 6px;
+            right: 8px;
+            font-size: 0.68rem;
+            color: var(--cyan-glow);
+            font-family: monospace;
+            background: rgba(0,0,0,0.7);
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+
+        .terminal-box {
+            background: #000;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            color: var(--cyan-glow);
+            font-size: 0.78rem;
+            height: 85px;
+            overflow-y: auto;
+            direction: ltr;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .leak-result {
+            background: rgba(255, 0, 85, 0.08);
+            border-right: 3px solid var(--red-glow);
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 0.82rem;
+            color: #ff99bb;
+            display: none;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .leak-result strong {
+            color: #fff;
+        }
+
+        .pass-leak {
+            color: var(--gold-color);
+            font-family: monospace;
+            background: rgba(0,0,0,0.5);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .btn-pdf {
+            background: transparent;
+            border: 1px solid var(--cyan-glow);
+            color: var(--cyan-glow);
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            display: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-pdf:hover {
+            background: rgba(0, 240, 255, 0.1);
+        }
+
+        .sponsors-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .sponsor-box {
+            background: #010306;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-bar">
+        <div class="logo-box">
+            <div class="logo-hat"></div>
+            <div>
+                <div class="logo-text">blackhat</div>
+                <div class="logo-sub">MIDDLE EAST & AFRICA</div>
+            </div>
+        </div>
+        <div class="nav-tag">MENU</div>
+    </div>
+
+    <div class="container">
+
+        <div class="hero-champion">
+            <div class="champ-title">
+                The winner of first place is the international professional hacker Black Hat 🎩
+            </div>
+            <div class="champ-name">
+                SALMAN ALANZI 🥇
+            </div>
+            <div class="champ-badge">
+                nicknamed ( 🫆 King of Internet )
+            </div>
+        </div>
+
+        <div class="section-title">
+            مختبرات الاستكشاف والاستخبارات الرقمية (OSINT RADAR LABS)
+        </div>
+
+        <!-- أداة 1 -->
+        <div class="tool-card">
+            <div class="tool-sidebar-banner"></div>
+            <div class="tool-content">
+                <div class="tool-header-line">
+                    <span class="tool-name-code">📸 Visual Recon</span>
+                    <span class="tool-short-tag">V-RECON</span>
+                </div>
+                <div class="tool-info-text">
+                    استكشاف واستخراج البيانات الوصفية المرئية، مطابقة الوجوه والبصمة الرقمية وتحديد موقع التقاط الصورة الجغرافي.
+                </div>
+                <div class="action-row">
+                    <input type="text" class="input-target" id="in-vrecon" placeholder="أدخل رابط الصورة المستهدفة...">
+                    <button class="btn-discover" onclick="executeAdvancedHack('vrecon', 'Image Target')">[ استكشاف وتحليل البيانات ]</button>
+                </div>
+                <div class="map-tracker" id="map-vrecon">
+                    <div class="map-grid-overlay"></div>
+                    <div class="map-ping"></div>
+                    <div class="map-coordinates" id="coord-vrecon">LAT: 24.7136 | LONG: 46.6753 [SATELLITE LOCKED]</div>
+                </div>
+                <div class="terminal-box" id="term-vrecon">> [SYSTEM]: Visual-Recon active. Awaiting image target...</div>
+                <div class="leak-result" id="leak-vrecon">
+                    ⚠️ <strong>LEAK REPORT [V-RECON]:</strong><br>
+                    - Coordinates: 24.7136° N, 46.6753° E (Riyadh Node)<br>
+                    - Device EXIF: iPhone 16 Pro Max (Secure Hash #8849)<br>
+                    - Exposed Password/Token: <span class="pass-leak">v_recon_sec_9901x#secure</span>
+                </div>
+                <button class="btn-pdf" id="pdf-vrecon" onclick="downloadPDF('Visual Recon')">📥 تحميل تقرير الاستخبارات الكامل (PDF)</button>
+            </div>
+        </div>
+
+        <!-- أداة 2 -->
+        <div class="tool-card">
+            <div class="tool-sidebar-banner banner-gold"></div>
+            <div class="tool-content">
+                <div class="tool-header-line">
+                    <span class="tool-name-code">🐦 BirdHunt Engine</span>
+                    <span class="tool-short-tag">X-TRACK</span>
+                </div>
+                <div class="tool-info-text">
+                    تحليل الشبكات العنقودية لحسابات X، سحب التغريدات والأرشيف المحذوف، وكشف الحسابات الخفية المرتبطة.
+                </div>
+                <div class="action-row">
+                    <input type="text" class="input-target" id="in-xtrack" placeholder="أدخل معرف الحساب المستهدف (@Username)...">
+                    <button class="btn-discover" onclick="executeAdvancedHack('xtrack', 'X Handle Target')">[ تتبع وسحب الأرشيف ]</button>
+                </div>
+                <div class="map-tracker" id="map-xtrack">
+                    <div class="map-grid-overlay"></div>
+                    <div class="map-ping"></div>
+                    <div class="map-coordinates" id="coord-xtrack">NODE: X-SERVER-US-EAST [SESSION DECRYPTED]</div>
+                </div>
+                <div class="terminal-box" id="term-xtrack">> [SYSTEM]: X-Track tactical engine initialized...</div>
+                <div class="leak-result" id="leak-xtrack">
+                    ⚠️ <strong>LEAK REPORT [X-TRACK]:</strong><br>
+                    - Target Handle: Active & Tracked via Node 04<br>
+                    - Deleted Archive: 1,420 Tweets & Direct Messages retrieved.<br>
+                    - Recovered Access Key: <span class="pass-leak">x_hunt_pass$2026_alpha</span>
+                </div>
+                <button class="btn-pdf" id="pdf-xtrack" onclick="downloadPDF('BirdHunt X-Track')">📥 تحميل تقرير الاستخبارات الكامل (PDF)</button>
+            </div>
+        </div>
+
+        <!-- أداة 3 -->
+        <div class="tool-card">
+            <div class="tool-sidebar-banner"></div>
+            <div class="tool-content">
+                <div class="tool-header-line">
+                    <span class="tool-name-code">🎥 EulerStream Interceptor</span>
+                    <span class="tool-short-tag">ESTREAM</span>
+                </div>
+                <div class="tool-info-text">
+                    اعتراض حزم البث المباشر الرقمية، تحليل المصدر وتحديد خوادم البث المباشرة (Node IP) والموقع الجغرافي.
+                </div>
+                <div class="action-row">
+                    <input type="text" class="input-target" id="in-estream" placeholder="أدخل رابط البث المباشر...">
+                    <button class="btn-discover" onclick="executeAdvancedHack('estream', 'Live Stream Target')">[ اعتراض البث والتتبع ]</button>
+                </div>
+                <div class="map-tracker" id="map-estream">
+                    <div class="map-grid-overlay"></div>
+                    <div class="map-ping"></div>
+                    <div class="map-coordinates" id="coord-estream">STREAM NODE: 185.220.101.4 | PORT: 8080</div>
+                </div>
+                <div class="terminal-box" id="term-estream">> [SYSTEM]: EulerStream interceptor on standby...</div>
+                <div class="leak-result" id="leak-estream">
+                    ⚠️ <strong>LEAK REPORT [ESTREAM]:</strong><br>
+                    - Source IP: 185.220.101.4 (Encrypted Relay)<br>
+                    - Bandwidth Captured: 4.8 GB/s Real-time packets.<br>
+                    - Stream Master Passkey: <span class="pass-leak">estream_live_auth_7719</span>
+                </div>
+                <button class="btn-pdf" id="pdf-estream" onclick="downloadPDF('EulerStream')">📥 تحميل تقرير الاستخبارات الكامل (PDF)</button>
+            </div>
+        </div>
+
+        <!-- أداة 4 -->
+        <div class="tool-card">
+            <div class="tool-sidebar-banner banner-red"></div>
+            <div class="tool-content">
+                <div class="tool-header-line">
+                    <span class="tool-name-code">🌐 PhishCheck Scanner</span>
+                    <span class="tool-short-tag">P-SCAN</span>
+                </div>
+                <div class="tool-info-text">
+                    فحص الهندسة العكسية والثغرات، اختراق مناعة الجدران النارية وسحب سجلات ثغرات البنية التحتية.
+                </div>
+                <div class="action-row">
+                    <input type="text" class="input-target" id="in-pscan" placeholder="أدخل النطاق المستهدف (URL)...">
+                    <button class="btn-discover" onclick="executeAdvancedHack('pscan', 'Domain Target')">[ فحص واستكشاف الثغرات ]</button>
+                </div>
+                <div class="map-tracker" id="map-pscan">
+                    <div class="map-grid-overlay"></div>
+                    <div class="map-ping"></div>
+                    <div class="map-coordinates" id="coord-pscan">FIREWALL EXPLOIT: ROOT ACCESS GRANTED</div>
+                </div>
+                <div class="terminal-box" id="term-pscan">> [SYSTEM]: PhishCheck vulnerability engine online...</div>
+                <div class="leak-result" id="leak-pscan" style="border-right-color: var(--red-glow);">
+                    🔴 <strong>CRITICAL VULNERABILITY [P-SCAN]:</strong><br>
+                    - Firewall Bypass: Successful (Admin Privilege Escalation)<br>
+                    - Database Dump: Complete SQL records exposed.<br>
+                    - Root Admin Password: <span class="pass-leak">root_admin_blackhat#2026!</span>
+                </div>
+                <button class="btn-pdf" id="pdf-pscan" onclick="downloadPDF('PhishCheck P-Scan')">📥 تحميل تقرير الاستخبارات الكامل (PDF)</button>
+            </div>
+        </div>
+
+        <!-- الرعاة الرسميون -->
+        <div class="sponsors-container">
+            <div style="font-size: 0.9rem; font-weight: bold; color: #fff;">ATTENDEE OVERVIEW & OFFICIAL SPONSORS</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">الشركاء والرعاة الرسميون لفعاليات بلاك هات الشرق الأوسط وأفريقيا</div>
+            <div class="sponsors-grid">
+                <div class="sponsor-box">⚡ أرامكو السعودية<br>(Saudi Aramco)</div>
+                <div class="sponsor-box">🛡️ سدايا<br>(SDAIA)</div>
+                <div class="sponsor-box">💳 المدفوعات السعودية<br>(Saudi Payments)</div>
+                <div class="sponsor-box">🌐 هيئة تنمية الصادرات<br>(SEDA)</div>
+            </div>
+        </div>
+
+        <footer>
+            BLACK HAT MEA &copy; 2026 - ALL RIGHTS RESERVED TO SALMAN OSINT
+        </footer>
+
+    </div>
+
+    <script>
+        function executeAdvancedHack(key, targetType) {
+            const term = document.getElementById(`term-${key}`);
+            const leak = document.getElementById(`leak-${key}`);
+            const map = document.getElementById(`map-${key}`);
+            const pdfBtn = document.getElementById(`pdf-${key}`);
+            const input = document.getElementById(`in-${key}`).value;
+
+            if(!input) {
+                term.innerHTML = `> [ERROR]: Target parameter is missing! Provide input target.`;
+                return;
+            }
+
+            map.style.display = 'block';
+            term.innerHTML = `> [05%] Initializing advanced OSINT payload for ${targetType}: ${input}...\n`;
+            
+            setTimeout(() => {
+                term.innerHTML += `> [40%] Bypassing firewall & locking satellite GPS coordinates...\n`;
+            }, 300);
+
+            setTimeout(() => {
+                term.innerHTML += `> [80%] Decrypting databases & extracting confidential logs...\n`;
+            }, 650);
+
+            setTimeout(() => {
+                term.innerHTML += `> [100%] SUCCESS: Target fully compromised, decrypted & leaked!\n`;
+                leak.style.display = 'block';
+                pdfBtn.style.display = 'block';
+            }, 950);
+        }
+
+        function downloadPDF(toolName) {
+            alert(`[SUCCESS]: تم إنشاء وتصدير تقرير الاستخبارات والتحليل الكامل لأداة (${toolName}) بصيغة PDF بنجاح لـ SALMAN ALANZI!`);
+        }
+    </script>
+</body>
+</html>
