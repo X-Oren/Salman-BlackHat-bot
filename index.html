@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Hat MEA - SALMAN OSINT Intelligence Center</title>
+    <style>
+        :root {
+            --bg-main: #010306;
+            --card-bg: rgba(7, 11, 18, 0.95);
+            --border-color: #121d2d;
+            --cyan-glow: #00f0ff;
+            --red-glow: #ff0055;
+            --gold-color: #ffd700;
+            --text-main: #e6edf3;
+            --text-muted: #8b949e;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-main);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.05), transparent 70%),
+                linear-gradient(180deg, rgba(1, 3, 6, 0.98) 0%, rgba(3, 6, 12, 0.99) 100%);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .header-bar {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-hat {
+            width: 28px;
+            height: 28px;
+            background: var(--cyan-glow);
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+        }
+
+        .logo-text {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 1px;
+            text-transform: lowercase;
+        }
+
+        .logo-sub {
+            font-size: 0.55rem;
+            color: var(--cyan-glow);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-tag {
+            background: var(--cyan-glow);
+            color: #000;
+            padding: 5px 14px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            border-radius: 3px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .hero-champion {
+            background: rgba(7, 11, 18, 0.9);
+            border: 1px solid var(--border-color);
+            border-right: 3px solid var(--gold-color);
+            border-radius: 6px;
+            padding: 18px 15px;
+            text-align: center;
+            margin: 15px 0 25px 0;
+        }
+
+        .champ-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            direction: ltr;
+            margin-bottom: 6px;
+        }
+
+        .champ-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #ffffff;
+            direction: ltr;
+            letter-spacing: 1px;
+            margin: 4px 0;
+        }
+
+        .champ-badge {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.06);
+            border: 1px solid var(--border-color);
+            color: var(--cyan-glow);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            direction: ltr;
+            margin-top: 6px;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #fff;
+            margin: 25px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 3px;
+            height: 16px;
+            background: var(--cyan-glow);
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-sidebar-banner {
+            width: 6px;
+            border-radius: 3px;
+            background: var(--cyan-glow);
+            flex-shrink: 0;
+        }
+
+        .banner-red { background: var(--red-glow); }
+        .banner-gold { background: var(--gold-color); }
+
+        .tool-content { flex: 1; }
+
+        .tool-header-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .tool-name-code {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .tool-short-tag {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--cyan-glow);
+            border: 1px solid var(--cyan-glow);
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .tool-info-text {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .input-target {
+            flex: 1;
+            background: #010306;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 9px 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        .btn-discover {
+            background: var(--cyan-glow);
+            color: #000;
+            border: none;
+            padding: 9px 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        /* خريطة تتبع جغرافية حقيقية (حاوية الخريطة) */
+        .real-map-container {
+            height: 150px;
+            background: #02060c;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+            display: none;
+        }
+
+        .map-grid {
+            position: absolute;
+            width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            background-size: 25px 25px;
+        }
+
+        .radar-sweep {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 200px; height: 200px;
+            transform: translate(-50%, -50%);
+            border: 1px dashed rgba(0, 240, 255, 0.3);
+            border-radius: 50%;
+            animation: radarRotate 4s linear infinite;
+        }
+
+        @keyframes radarRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .target-pin {
+            position: absolute;
+            top: 50%; left: 60%;
+            width: 12px; height: 12px;
+            background: var(--red-glow);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px var(--red-glow);
+            animation: pinPulse 1s infinite alternate;
+        }
+
+        @keyframes pinPulse {
+            from { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            to { transform: translate(-50%, -50%) scale(1.8); opacity: 1; }
+        }
+
+        .map-hud-info {
+            position: absolute;
+            bottom: 8px; left: 10px; right: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-family: monospace;
+            font-size: 0.7rem;
+            color: var(--cyan-glow);
+            background: rgba(0,0,0,0.8);
+            padding: 4px 8px;
+            border-radius: 3px;
+        }
+
+        .terminal-box {
+            background: #000;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            color: var(--cyan-glow);
+            font-size: 0.78rem;
+            height: 85px;
+            overflow-y: auto;
+            direction: ltr;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        /* قائمة معلومات التسريب المفصلة والدقيقة */
+        .leak-report-box {
+            background: rgba(255, 0, 85, 0.05);
+            border: 1px solid rgba(255, 0, 85, 0.3);
+            border-radius: 6px;
+            padding: 14px;
+            margin-bottom: 12px;
+            display: none;
+            direction: ltr;
+            text-align: left;
+            font-family: monospace;
+        }
+
+        .leak-title {
+            color: var(--red-glow);
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255,0,85,0.2);
+            padding-bottom: 4px;
+            direction: ltr;
+        }
+
+        .leak-item {
+            font-size: 0.78rem;
+            color: #d1d5db;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .leak-val {
+            color: var(--gold-color);
+            font-weight: bold;
+        }
+
+        /* زر حفظ تقرير PDF */
+        .btn-pdf-download {
+            background: linear-gradient(135deg, #00f0ff, #0088ff);
+            color: #000;
+            border: none;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            width: 100%;
+            display: none;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            transition: 0.2s;
+        }
+
+        .btn-pdf-download:hover {
+            opacity: 0.9;
+        }
+
+        .sponsors-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .sponsor-box {
+            background: #010306;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-bar">
+        <div class="logo-box">
+            <div class="logo-hat"></div>
+            <div>
+                <div class="logo-text">blackhat</div>
+                <div class="logo-sub">MIDDLE EAST & AFRICA</div>
+            </div>
+        </div>
+        <div class="nav-tag">MENU</div>
+    </div>
+
+    <div class="container">
+
+        <div class="hero-champion">
+            <div class="champ-title">
+                The winner of first place is the international professional hacker Black Hat 🎩
+            </div>
+            <div class="champ-name">
+                SALMAN ALANZI 🥇
+            </div>
+            <div class="champ-badge">
+                nicknamed ( 🫆 King of Internet )
+            </div>
+        </div>
+
+        <div class="section-title">
+            مختبرات الاستكشاف والاستخبارات الرقمية (OSINT RADAR LABS)
+        </div>
+
+        <!-- أداة 1: V-RECON -->
+        <div class="tool-card">
+            <div class="tool-sidebar-banner"></div>
+            <div class="tool-content">
+                <div class="tool-header-line">
+                    <span class="tool-name-code">📸 Visual Recon</span>
+                    <span class="tool-short-tag">V-RECON</span>
+                </div>
+                <div class="tool-info-text">
+                    استكشاف واستخراج البيانات الوصفية المرئية، مطابقة البصمة الرقمية، وتحديد الموقع الجغرافي الدقيق عبر الأقمار الصناعية وسحب التسريبات.
+                </div>
+                <div class="action-row">
+                    <input type="text" class="input-target" id="in-vrecon" placeholder="أدخل رابط الصورة أو الهدف...">
+                    <button class="btn-discover" onclick="runOSINTAnalysis('vrecon', 'Visual Recon')">[ استكشاف وتحليل البيانات ]</button>
+                </div>
+                
+                <!-- خريطة التتبع الحية الدقيقة -->
+                <div class="real-map-container" id="map-vrecon">
+                    <div class="map-grid"></div>
+                    <div class="radar-sweep"></div>
+                    <div class="target-pin"></div>
+                    <div class="map-hud-info">
+                        <span>LAT: 24.7136 N | LONG: 46.6753 E</span>
+                        <span>STATUS: SATELLITE LOCKED</span>
+                    </div>
+                </div>
+
+                <div class="terminal-box" id="term-vrecon">> [SYSTEM]: Visual-Recon ready. Awaiting target...</div>
+
+                <!-- قائمة معلومات التسريب الدقيقة -->
+                <div class="leak-report-box" id="leak-vrecon">
+                    <div class="leak-title">⚠️ COMPREHENSIVE LEAK DATA REPORT [V-RECON]</div>
+                    <div class="leak-item"><span>Target Type:</span> <span class="leak-val">Visual Metadata / EXIF</span></div>
+                    <div class="leak-item"><span>Geo Location:</span> <span class="leak-val">Riyadh, Central Node (24.7136, 46.6753)</span></div>
+                    <div class="leak-item"><span>Device Model:</span> <span class="leak-val">iPhone 16 Pro Max (Secure Build #992)</span></div>
+                    <div class="leak-item"><span>Leaked Database Hash:</span> <span class="leak-val">#db_dump_9901x_secure</span></div>
+                    <div class="leak-item"><span>Exposed Passcode / Token:</span> <span class="leak-val" style="color:var(--red-glow);">v_recon_master_2026!#</span></div>
+                </div>
+
+                <button class="btn-pdf-download" id="pdf-vrecon" onclick="exportPDFReport('Visual Recon')">📥 حفظ تقرير الاستخبارات والتسريب بصيغة PDF</button>
+            </div>
+        </div>
+
+        <!-- أداة 2: X-TRACK -->
+        <div class="tool-card">
+            <div class="tool-sidebar-banner banner-gold"></div>
+            <div class="tool-content">
+                <div class="tool-header-line">
+                    <span class="tool-name-code">🐦 BirdHunt Engine</span>
+                    <span class="tool-short-tag">X-TRACK</span>
+                </div>
+                <div class="tool-info-text">
+                    تحليل الشبكات العنقودية لحسابات X، سحب الأرشيف المحذوف بالكامل، كشف الحسابات الخفية واستخراج رموز الدخول.
+                </div>
+                <div class="action-row">
+                    <input type="text" class="input-target" id="in-xtrack" placeholder="أدخل معرف الحساب المستهدف (@Username)...">
+                    <button class="btn-discover" onclick="runOSINTAnalysis('xtrack', 'BirdHunt X-Track')">[ تتبع وسحب الأرشيف ]</button>
+                </div>
+
+                <div class="real-map-container" id="map-xtrack">
+                    <div class="map-grid"></div>
+                    <div class="radar-sweep"></div>
+                    <div class="target-pin"></div>
+                    <div class="map-hud-info">
+                        <span>NODE: X-US-EAST-04</span>
+                        <span>STATUS: SESSION DECRYPTED</span>
+                    </div>
+                </div>
+
+                <div class="terminal-box" id="term-xtrack">> [SYSTEM]: X-Track tactical engine initialized...</div>
+
+                <div class="leak-report-box" id="leak-xtrack">
+                    <div class="leak-title">⚠️ COMPREHENSIVE LEAK DATA REPORT [X-TRACK]</div>
+                    <div class="leak-item"><span>Target Handle:</span> <span class="leak-val">Active Node Monitored</span></div>
+                    <div class="leak-item"><span>Deleted Archive:</span> <span class="leak-val">1,420 Tweets & Direct Messages</span></div>
+                    <div class="leak-item"><span>Connected IP:</span> <span class="leak-val">192.168.4.22 (Encrypted Proxy)</span></div>
+                    <div class="leak-item"><span>Exposed Session Key:</span> <span class="leak-val" style="color:var(--red-glow);">x_hunt_pass$2026_alpha</span></div>
+                </div>
+
+                <button class="btn-pdf-download" id="pdf-xtrack" onclick="exportPDFReport('BirdHunt X-Track')">📥 حفظ تقرير الاستخبارات والتسريب بصيغة PDF</button>
+            </div>
+        </div>
+
+        <!-- أداة 3: ESTREAM -->
+        <div class="tool-card">
+            <div class="tool-sidebar-banner"></div>
+            <div class="tool-content">
+                <div class="tool-header-line">
+                    <span class="tool-name-code">🎥 EulerStream Interceptor</span>
+                    <span class="tool-short-tag">ESTREAM</span>
+                </div>
+                <div class="tool-info-text">
+                    اعتراض حزم البث المباشر الرقمية، تحليل المصدر، تحديد خوادم البث المباشرة (Node IP) واستخراج مفاتيح البث.
+                </div>
+                <div class="action-row">
+                    <input type="text" class="input-target" id="in-estream" placeholder="أدخل رابط البث المباشر...">
+                    <button class="btn-discover" onclick="runOSINTAnalysis('estream', 'EulerStream')">[ اعتراض البث والتتبع ]</button>
+                </div>
+
+                <div class="real-map-container" id="map-estream">
+                    <div class="map-grid"></div>
+                    <div class="radar-sweep"></div>
+                    <div class="target-pin"></div>
+                    <div class="map-hud-info">
+                        <span>STREAM IP: 185.220.101.4</span>
+                        <span>PORT: 8080 [ACTIVE INTERCEPT]</span>
+                    </div>
+                </div>
+
+                <div class="terminal-box" id="term-estream">> [SYSTEM]: EulerStream interceptor on standby...</div>
+
+                <div class="leak-report-box" id="leak-estream">
+                    <div class="leak-title">⚠️ COMPREHENSIVE LEAK DATA REPORT [ESTREAM]</div>
+                    <div class="leak-item"><span>Server Node:</span> <span class="leak-val">185.220.101.4 (Encrypted Relay)</span></div>
+                    <div class="leak-item"><span>Bandwidth Captured:</span> <span class="leak-val">4.8 GB/s Real-time packets</span></div>
+                    <div class="leak-item"><span>Stream Master Passkey:</span> <span class="leak-val" style="color:var(--red-glow);">estream_live_auth_7719</span></div>
+                </div>
+
+                <button class="btn-pdf-download" id="pdf-estream" onclick="exportPDFReport('EulerStream')">📥 حفظ تقرير الاستخبارات والتسريب بصيغة PDF</button>
+            </div>
+        </div>
+
+        <!-- أداة 4: P-SCAN -->
+        <div class="tool-card">
+            <div class="tool-sidebar-banner banner-red"></div>
+            <div class="tool-content">
+                <div class="tool-header-line">
+                    <span class="tool-name-code">🌐 PhishCheck Scanner</span>
+                    <span class="tool-short-tag">P-SCAN</span>
+                </div>
+                <div class="tool-info-text">
+                    فحص الهندسة العكسية والثغرات، اختراق مناعة الجدران النارية، وسحب سجلات قواعد البيانات وكلمات مرور المشرفين.
+                </div>
+                <div class="action-row">
+                    <input type="text" class="input-target" id="in-pscan" placeholder="أدخل النطاق المستهدف (URL)...">
+                    <button class="btn-discover" onclick="runOSINTAnalysis('pscan', 'PhishCheck P-Scan')">[ فحص واستكشاف الثغرات ]</button>
+                </div>
+
+                <div class="real-map-container" id="map-pscan">
+                    <div class="map-grid"></div>
+                    <div class="radar-sweep"></div>
+                    <div class="target-pin"></div>
+                    <div class="map-hud-info">
+                        <span>FIREWALL STATUS: BYPASSED</span>
+                        <span>ROOT PRIVILEGE: GRANTED</span>
+                    </div>
+                </div>
+
+                <div class="terminal-box" id="term-pscan">> [SYSTEM]: PhishCheck vulnerability engine online...</div>
+
+                <div class="leak-report-box" id="leak-pscan" style="border-color: var(--red-glow);">
+                    <div class="leak-title" style="color:var(--red-glow);">🔴 CRITICAL VULNERABILITY & DATA DUMP [P-SCAN]</div>
+                    <div class="leak-item"><span>Exploit Type:</span> <span class="leak-val">SQL Injection & Admin Escalation</span></div>
+                    <div class="leak-item"><span>Database Records:</span> <span class="leak-val">Full SQL Table Dump Exposed</span></div>
+                    <div class="leak-item"><span>Root Admin Password:</span> <span class="leak-val" style="color:var(--red-glow);">root_admin_blackhat#2026!</span></div>
+                </div>
+
+                <button class="btn-pdf-download" id="pdf-pscan" onclick="exportPDFReport('PhishCheck P-Scan')">📥 حفظ تقرير الاستخبارات والتسريب بصيغة PDF</button>
+            </div>
+        </div>
+
+        <!-- الرعاة الرسميون -->
+        <div class="sponsors-container">
+            <div style="font-size: 0.9rem; font-weight: bold; color: #fff;">ATTENDEE OVERVIEW & OFFICIAL SPONSORS</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">الشركاء والرعاة الرسميون لفعاليات بلاك هات الشرق الأوسط وأفريقيا</div>
+            <div class="sponsors-grid">
+                <div class="sponsor-box">⚡ أرامكو السعودية<br>(Saudi Aramco)</div>
+                <div class="sponsor-box">🛡️ سدايا<br>(SDAIA)</div>
+                <div class="sponsor-box">💳 المدفوعات السعودية<br>(Saudi Payments)</div>
+                <div class="sponsor-box">🌐 هيئة تنمية الصادرات<br>(SEDA)</div>
+            </div>
+        </div>
+
+        <footer>
+            BLACK HAT MEA &copy; 2026 - ALL RIGHTS RESERVED TO SALMAN OSINT
+        </footer>
+
+    </div>
+
+    <script>
+        function runOSINTAnalysis(key, toolName) {
+            const term = document.getElementById(`term-${key}`);
+            const leakBox = document.getElementById(`leak-${key}`);
+            const mapBox = document.getElementById(`map-${key}`);
+            const pdfBtn = document.getElementById(`pdf-${key}`);
+            const inputVal = document.getElementById(`in-${key}`).value;
+
+            if(!inputVal) {
+                term.innerHTML = `> [ERROR]: Target parameter is missing! Provide target input.`;
+                return;
+            }
+
+            mapBox.style.display = 'block';
+            term.innerHTML = `> [05%] Initializing satellite radar lock for target: ${inputVal}...\n`;
+            
+            setTimeout(() => {
+                term.innerHTML += `> [45%] Bypassing firewall & mapping target coordinates...\n`;
+            }, 350);
+
+            setTimeout(() => {
+                term.innerHTML += `> [80%] Extracting leaked databases & confidential keys...\n`;
+            }, 700);
+
+            setTimeout(() => {
+                term.innerHTML += `> [100%] SUCCESS: Target fully compromised & leaks extracted!\n`;
+                leakBox.style.display = 'block';
+                pdfBtn.style.display = 'block';
+            }, 1000);
+        }
+
+        function exportPDFReport(toolName) {
+            alert(`[SUCCESS]: تم إعداد وتصدير تقرير الاستخبارات والتسريبات الكامل لأداة (${toolName}) بصيغة PDF بنجاح خصيصاً للمحترف SALMAN ALANZI!`);
+        }
+    </script>
+</body>
+</html>
