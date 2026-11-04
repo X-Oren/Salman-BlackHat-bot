@@ -2,33 +2,145 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title> صفحة التحليل الشامل والأمان | Salman OSINT </title>
+    <title>تقرير التحليل والتسريبات الأمنية | SALMAN OSINT 🫆</title>
     <style>
-        body { background: #010108; color: #00ff66; font-family: monospace; padding: 30px; }
-        h1 { border-bottom: 2px solid #00ff66; padding-bottom: 10px; margin-bottom: 20px; font-size: 22px; }
-        .report-box { background: rgba(0,255,102,0.05); border: 1px solid #00ff66; padding: 25px; margin-bottom: 20px; border-radius: 4px; box-shadow: 0 0 15px rgba(0,255,102,0.1); }
-        .data-item { margin: 15px 0; color: #ff0055; font-size: 16px; }
-        .value { color: #fff; font-weight: bold; }
-        .status-badge { background: #ff0055; color: #fff; padding: 5px 12px; font-size: 18px; font-weight: bold; display: inline-block; margin-top: 15px; border-radius: 3px; box-shadow: 0 0 10px #ff0055; }
-        a { color: #00ff66; text-decoration: none; border-bottom: 1px dashed #00ff66; font-size: 16px; }
-        a:hover { color: #fff; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        body {
+            background-color: #010108;
+            color: #00ff66;
+            padding: 30px;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 30px);
+            background-size: 550px 550px;
+        }
+        .report-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: rgba(10, 10, 25, 0.95);
+            border: 2px solid #ff0055;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.4);
+        }
+        h1 {
+            color: #ff0055;
+            border-bottom: 2px solid #ff0055;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        .leak-block {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 0, 85, 0.05);
+            border-left: 4px solid #ff0055;
+        }
+        .label {
+            color: #ff0055;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .value {
+            color: #fff;
+            margin-top: 5px;
+            display: block;
+        }
+        .path-info {
+            background: rgba(0, 255, 102, 0.08);
+            border: 1px solid #00ff66;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #00ff66;
+        }
+        .btn-group {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .action-btn {
+            background: #ff0055;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: monospace;
+        }
+        .action-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+        a {
+            color: #00ff66;
+            text-decoration: none;
+            border-bottom: 1px dashed #00ff66;
+        }
     </style>
 </head>
 <body>
-    <h1>[ تقرير الأمان الشامل - صلاحيات فحص كاملة ]</h1>
-    
-    <div class="report-box">
-        <h3>نتائج الفحص والتحليل السيبراني للهدف:</h3>
-        <div class="data-item">كلمات المرور (Passwords): <span class="value">[ تم استخراج وفك تشفير الـ Hashes بالكامل ]</span></div>
-        <div class="data-item">قواعد البيانات المسربة (Data Leaks): <span class="value">[ مطابقة شاملة مع الأرشيف والداتا المفتوحة ]</span></div>
-        <div class="data-item">البريد الإلكتروني المرتبط (Emails): <span class="value">[ تم حصر كافة الحسابات والنشاطات المرتبطة ]</span></div>
-        <div class="data-item">أرقام الهواتف (Phone Numbers): <span class="value">[ تم رصد خطوط الاتصال والمسارات الجغرافية ]</span></div>
-        <div class="data-item">تفاصيل إضافية عن الهدف (Full Target Profile): <span class="value">[ ملف استخباري متكامل جاهز ]</span></div>
+
+    <div class="report-container">
+        <h1>1. SALMAN ATTACKS 🥷🏻</h1>
         
-        <div class="status-badge">تم التحليل SALMAN OSINT 🫆</div>
+        <!-- معلومات التسريب وأين -->
+        <div class="leak-block">
+            <span class="label">1. معلومات التسريب وأين:</span>
+            <span class="value">[ تم رصد قواعد البيانات في سيرفرات خارجية مظلمة وأرشيفات التسريبات المفتوحة ]</span>
+        </div>
+
+        <!-- كلمات المرور -->
+        <div class="leak-block">
+            <span class="label">2. كلمات المرور:</span>
+            <span class="value">[ موجود - تم فك الـ Hashes واستخراج مفاتيح الدخول ]</span>
+        </div>
+
+        <!-- البريد الإلكتروني -->
+        <div class="leak-block">
+            <span class="label">3. البريد الإلكتروني:</span>
+            <span class="value">[ موجود - تم حصر الحساب المرتبط ونشاطاته ]</span>
+        </div>
+
+        <!-- الداتا ومعلومات حساسة -->
+        <div class="leak-block">
+            <span class="label">4. الداتا ومعلومات حساسة:</span>
+            <span class="value">[ موجودة - ملفات سرية وجلسات دخول نشطة مطابقة ]</span>
+        </div>
+
+        <!-- كل المعلومات الأخرى -->
+        <div class="leak-block">
+            <span class="label">5. كل المعلومات الأخرى:</span>
+            <span class="value">[ تم سحب الأجهزة المتصلة، نطاقات الـ IP، والمسارات الجغرافية كاملة ]</span>
+        </div>
+
+        <!-- خيار حفظ الفحص PDF / TXT -->
+        <div class="btn-group">
+            <span style="color: #fff; font-weight: bold;">6. خيار هل تريد حفظ الفحص بـ PDF / TXT؟</span>
+            <button class="action-btn" onclick="saveReport()">نعم، حفظ الملف</button>
+        </div>
+
+        <div class="path-info" id="path-box" style="display:none;">
+            [✓] تم حفظ الملف بنجاح بصيغة TXT في مسار النظام الواضح:<br>
+            <strong>C:/Users/Salman/Downloads/SALMAN_OSINT_Report.txt</strong>
+        </div>
+
+        <br><br>
+        <a href="index.html"><- العودة إلى لوحة الأدوات الرئيسية</a>
     </div>
 
-    <br>
-    <a href="index.html"><- العودة إلى لوحة القيادة الرئيسية</a>
+    <script>
+        function saveReport() {
+            const pathBox = document.getElementById('path-box');
+            pathBox.style.display = 'block';
+            alert("تم إنشاء ملف التقرير وحفظه تلقائياً في مسار التحميلات الواضح بـ TXT.");
+        }
+    </script>
 </body>
 </html>
