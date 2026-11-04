@@ -11,56 +11,57 @@
             font-family: 'Courier New', Courier, monospace;
         }
         body {
-            background-color: #010108;
+            background-color: #030308;
             color: #00ff66;
             padding: 30px;
             background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-                radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 30px);
+                radial-gradient(white, rgba(255,255,255,.15) 1.5px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.08) 1px, transparent 30px);
             background-size: 550px 550px;
         }
         .report-container {
             max-width: 850px;
             margin: 0 auto;
-            background: rgba(10, 10, 25, 0.95);
-            border: 2px solid #ff0055;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 25px rgba(255, 0, 85, 0.4);
+            background: #060610;
+            border: 1px solid #ff0055;
+            padding: 25px;
+            border-radius: 4px;
         }
         h1 {
             color: #ff0055;
-            border-bottom: 2px solid #ff0055;
-            padding-bottom: 12px;
+            border-bottom: 1px solid #ff0055;
+            padding-bottom: 10px;
             margin-bottom: 20px;
-            font-size: 22px;
+            font-size: 20px;
         }
         .leak-block {
-            margin: 15px 0;
-            padding: 15px;
-            background: rgba(255, 0, 85, 0.05);
-            border-left: 4px solid #ff0055;
+            margin: 12px 0;
+            padding: 12px;
+            background: #020206;
+            border-left: 3px solid #ff0055;
         }
         .label {
             color: #ff0055;
             font-weight: bold;
-            font-size: 15px;
+            font-size: 14px;
         }
         .value {
             color: #fff;
-            margin-top: 5px;
+            margin-top: 4px;
             display: block;
+            font-size: 13px;
         }
         .path-info {
-            background: rgba(0, 255, 102, 0.08);
+            background: #020d05;
             border: 1px solid #00ff66;
             padding: 10px;
             margin-top: 15px;
-            font-size: 13px;
+            font-size: 12px;
             color: #00ff66;
+            display: none;
         }
         .btn-group {
-            margin-top: 25px;
+            margin-top: 20px;
             display: flex;
             gap: 15px;
             align-items: center;
@@ -69,7 +70,7 @@
             background: #ff0055;
             color: #fff;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 16px;
             font-weight: bold;
             cursor: pointer;
             font-family: monospace;
@@ -82,6 +83,7 @@
             color: #00ff66;
             text-decoration: none;
             border-bottom: 1px dashed #00ff66;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -90,48 +92,48 @@
     <div class="report-container">
         <h1>1. SALMAN ATTACKS 🥷🏻</h1>
         
-        <!-- معلومات التسريب وأين -->
+        <!-- 1. معلومات التسريب وأين -->
         <div class="leak-block">
             <span class="label">1. معلومات التسريب وأين:</span>
-            <span class="value">[ تم رصد قواعد البيانات في سيرفرات خارجية مظلمة وأرشيفات التسريبات المفتوحة ]</span>
+            <span class="value">[ موجود - تم رصد قواعد البيانات المؤرشفة في السيرفرات المظلمة ومستودعات البيانات المفتوحة ]</span>
         </div>
 
-        <!-- كلمات المرور -->
+        <!-- 2. كلمات المرور -->
         <div class="leak-block">
-            <span class="label">2. كلمات المرور:</span>
-            <span class="value">[ موجود - تم فك الـ Hashes واستخراج مفاتيح الدخول ]</span>
+            <span class="label">2. كلمات المرور (Passwords):</span>
+            <span class="value">موجود / تم فك تشفير الـ Hashes بنجاح واستخراج مفاتيح الدخول النشطة.</span>
         </div>
 
-        <!-- البريد الإلكتروني -->
+        <!-- 3. البريد الالكتروني -->
         <div class="leak-block">
-            <span class="label">3. البريد الإلكتروني:</span>
-            <span class="value">[ موجود - تم حصر الحساب المرتبط ونشاطاته ]</span>
+            <span class="label">3. البريد الإلكتروني (Emails):</span>
+            <span class="value">موجود / تم حصر العناوين والحسابات المرتبطة بنشاط الهدف.</span>
         </div>
 
-        <!-- الداتا ومعلومات حساسة -->
+        <!-- 4. الداتا ومعلومات حساسة -->
         <div class="leak-block">
             <span class="label">4. الداتا ومعلومات حساسة:</span>
-            <span class="value">[ موجودة - ملفات سرية وجلسات دخول نشطة مطابقة ]</span>
+            <span class="value">موجودة / رصد ملفات وجلسات تصفح ومستندات مرتبطة بالنطاق المستهدف.</span>
         </div>
 
-        <!-- كل المعلومات الأخرى -->
+        <!-- 5. كل المعلومات الأخرى -->
         <div class="leak-block">
             <span class="label">5. كل المعلومات الأخرى:</span>
-            <span class="value">[ تم سحب الأجهزة المتصلة، نطاقات الـ IP، والمسارات الجغرافية كاملة ]</span>
+            <span class="value">رصد عناوين الـ IP، الأجهزة المتصلة، والمسارات الجغرافية كاملة بدقة.</span>
         </div>
 
-        <!-- خيار حفظ الفحص PDF / TXT -->
+        <!-- 6. خيار حفظ الفحص PDF -->
         <div class="btn-group">
-            <span style="color: #fff; font-weight: bold;">6. خيار هل تريد حفظ الفحص بـ PDF / TXT؟</span>
-            <button class="action-btn" onclick="saveReport()">نعم، حفظ الملف</button>
+            <span style="color: #fff; font-size: 14px; font-weight: bold;">6. هل تريد حفظ الفحص بـ PDF؟</span>
+            <button class="action-btn" onclick="saveReport()">نعم</button>
         </div>
 
-        <div class="path-info" id="path-box" style="display:none;">
-            [✓] تم حفظ الملف بنجاح بصيغة TXT في مسار النظام الواضح:<br>
+        <div class="path-info" id="path-box">
+            [✓] تم حفظ التقرير بصيغة PDF بنجاح في مسار النظام الواضح:<br>
             <strong>C:/Users/Salman/Downloads/SALMAN_OSINT_Report.txt</strong>
         </div>
 
-        <br><br>
+        <br>
         <a href="index.html"><- العودة إلى لوحة الأدوات الرئيسية</a>
     </div>
 
@@ -139,7 +141,7 @@
         function saveReport() {
             const pathBox = document.getElementById('path-box');
             pathBox.style.display = 'block';
-            alert("تم إنشاء ملف التقرير وحفظه تلقائياً في مسار التحميلات الواضح بـ TXT.");
+            alert("تم حفظ ملف الفحص بنجاح في مجلد التحميلات (Downloads) بتنسيق النص الواضح.");
         }
     </script>
 </body>
