@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salman OSINT | لوحة القيادة السيبرانية</title>
+    <title>Welcome SALMAN ALANZI OSINT 🫆</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
             font-family: 'Courier New', Courier, monospace;
         }
         body {
-            background-color: #03030c;
+            background-color: #010108;
             color: #00ff66;
             overflow-x: hidden;
             background-image: 
@@ -20,210 +20,176 @@
                 radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 30px);
             background-size: 550px 550px, 350px 350px;
             background-position: 0 0, 40px 60px;
+            padding: 20px;
         }
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background: rgba(0, 0, 0, 0.8);
-            border-bottom: 2px solid #00ff66;
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00ff66;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.3);
         }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
+        h1 {
             color: #00ff66;
-            text-shadow: 0 0 10px #00ff66;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 20px;
-            padding: 8px 15px;
-            border: 1px solid #00ff66;
-            transition: 0.3s;
-            background: rgba(0, 255, 102, 0.1);
-        }
-        nav a:hover {
-            background: #00ff66;
-            color: #000;
-            box-shadow: 0 0 15px #00ff66;
+            text-shadow: 0 0 15px #00ff66;
+            font-size: 28px;
         }
         .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
         }
-        .grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-        }
-        .card {
-            background: rgba(10, 10, 25, 0.9);
+        .section-card {
+            background: rgba(10, 10, 25, 0.95);
             border: 1px solid #00ff66;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: inset 0 0 10px rgba(0, 255, 102, 0.2);
-            margin-bottom: 20px;
+            padding: 25px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            box-shadow: inset 0 0 10px rgba(0, 255, 102, 0.15);
         }
         h2 {
             border-bottom: 1px dashed #00ff66;
             padding-bottom: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-size: 18px;
             color: #fff;
         }
-        .terminal-line {
-            margin: 12px 0;
-            color: #00ff66;
+        .tool-row {
             display: flex;
-            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 15px;
             align-items: center;
-            background: rgba(0, 255, 102, 0.05);
-            padding: 8px 12px;
-            border: 1px solid rgba(0, 255, 102, 0.3);
+            background: rgba(0, 255, 102, 0.04);
+            padding: 12px;
+            border: 1px solid rgba(0, 255, 102, 0.2);
         }
-        .cmd-badge {
+        .tool-name {
+            flex: 1;
+            font-weight: bold;
+            color: #00ff66;
+        }
+        input[type="text"] {
+            flex: 2;
+            background: #000;
+            border: 1px solid #00ff66;
+            color: #fff;
+            padding: 8px 12px;
+            font-family: monospace;
+        }
+        .salman-btn {
             background: #00ff66;
             color: #000;
-            padding: 4px 8px;
+            border: none;
+            padding: 8px 18px;
             font-weight: bold;
-            font-size: 12px;
             cursor: pointer;
+            transition: 0.3s;
         }
-        .cmd-badge:hover {
+        .salman-btn:hover {
             background: #fff;
             box-shadow: 0 0 10px #fff;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        th, td {
-            border: 1px solid #00ff66;
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background: rgba(0, 255, 102, 0.2);
-        }
-        .rank-1 {
-            background: rgba(255, 215, 0, 0.2);
-            color: #ffd700;
-            font-weight: bold;
-        }
-        .map-box {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(45deg, #020024, #090979, #00d4ff);
-            border: 1px solid #00ff66;
-            display: flex;
+        /* نافذة التيرمينال السريع المنبثقة */
+        #terminal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 999;
             justify-content: center;
             align-items: center;
-            position: relative;
-            overflow: hidden;
         }
-        .pulse-dot {
-            width: 15px;
-            height: 15px;
-            background: #ff0055;
-            border-radius: 50%;
-            box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.7);
-            animation: pulse 1.5s infinite;
+        .terminal-box {
+            width: 700px;
+            background: #050510;
+            border: 2px solid #00ff66;
+            padding: 25px;
+            box-shadow: 0 0 30px #00ff66;
+            color: #00ff66;
+            font-family: monospace;
         }
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(255, 0, 85, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 85, 0); }
+        .terminal-output {
+            height: 180px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">[ سلمان العنزي - OSINT COMMAND CENTER ]</div>
-        <nav>
-            <a href="index.html">الرئيسية</a>
-            <a href="security-analysis.html" id="security-btn">الامان (صلاحيات كاملة)</a>
-            <a href="#tools">الأدوات</a>
-            <a href="#live-map">خريطة البث</a>
-        </nav>
+        <h1>Welcome SALMAN ALANZI OSINT 🫆</h1>
     </header>
 
     <div class="container">
-        <div class="grid">
-            <!-- التيرمينال والأدوات بصلاحيات الفحص الكاملة -->
-            <div>
-                <div class="card" id="tools">
-                    <h2>قائمة أدوات الفحص المتقدم (Full Permission Engine)</h2>
-                    
-                    <div class="terminal-line">
-                        <span>> WhatsMyName (فحص شامل للحسابات)</span> 
-                        <span class="cmd-badge" onclick="runTool('WhatsMyName')">salmaan go</span>
-                    </div>
-                    
-                    <div class="terminal-line">
-                        <span>> Google Dorks (استخراج الثغرات والداتا)</span> 
-                        <span class="cmd-badge" onclick="runTool('Google Dorks')">salmaan go</span>
-                    </div>
-                    
-                    <div class="terminal-line">
-                        <span>> OSINT Industries (استخبارات الأهداف)</span> 
-                        <span class="cmd-badge" onclick="runTool('OSINT Industries')">salmaan go</span>
-                    </div>
-                </div>
-
-                <div class="card" id="live-map">
-                    <h2>خريطة البث المباشر الملونة (تتبع الأهداف)</h2>
-                    <div class="map-box">
-                        <div style="position: absolute; top: 15px; right: 15px; color: #fff; font-size: 12px;">LIVE FEED - RIYADH SECTOR</div>
-                        <div class="pulse-dot"></div>
-                    </div>
-                </div>
+        <!-- القسم الأول: أدوات فحص السوشل ميديا -->
+        <div class="section-card">
+            <h2>ادوات فحص البرامج سوشل ميديا</h2>
+            
+            <div class="tool-row">
+                <span class="tool-name">WhatsMyName / Social Scanner</span>
+                <input type="text" id="target-social" placeholder="اكتب الهدف (username / handle)">
+                <button class="salman-btn" onclick="executeScan('WhatsMyName', 'social')">Salman Go</button>
             </div>
+            
+            <div class="tool-row">
+                <span class="tool-name">Sherlock Multi-Platform</span>
+                <input type="text" id="target-sherlock" placeholder="اكتب الهدف للفحص">
+                <button class="salman-btn" onclick="executeScan('Sherlock', 'social')">Salman Go</button>
+            </div>
+        </div>
 
-            <!-- لوحة الصدارة -->
-            <div>
-                <div class="card">
-                    <h2>لوحة التصنيف العالمي (Global Rank)</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>المركز</th>
-                                <th>المستخدم / الفريق</th>
-                                <th>النقاط</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="rank-1">
-                                <td>1</td>
-                                <td>سلمان العنزي (Salman Alanzi KSA)</td>
-                                <td>9999</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Cyber_Ghost</td>
-                                <td>8450</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>RootX_9</td>
-                                <td>7920</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        <!-- القسم الثاني: أدوات فحص البنية التحتية وجدار الحماية -->
+        <div class="section-card">
+            <h2>ادوات فحص البنيه التحتيه وجدار الحماية</h2>
+            
+            <div class="tool-row">
+                <span class="tool-name">Nmap / Firewall Scanner</span>
+                <input type="text" id="target-infra" placeholder="اكتب الـ IP أو الدومين المستهدف">
+                <button class="salman-btn" onclick="executeScan('Nmap & Firewall', 'infra')">Salman Go</button>
+            </div>
+            
+            <div class="tool-row">
+                <span class="tool-name">Google Dorks & Assets Audit</span>
+                <input type="text" id="target-dorks" placeholder="اكتب الكلمة المفتاحية أو الهدف">
+                <button class="salman-btn" onclick="executeScan('Google Dorks', 'infra')">Salman Go</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة التيرمينال السريع أمام الشاشة -->
+    <div id="terminal-overlay">
+        <div class="terminal-box">
+            <h3 style="margin-bottom: 10px; border-bottom: 1px solid #00ff66; padding-bottom: 5px;">[ SALMAN TERMINAL - EXECUTION ENGINE ]</h3>
+            <div class="terminal-output" id="term-logs">
+                [+] Initializing kernel bypass...<br>
+                [+] Loading OSINT modules & proxies...<br>
             </div>
         </div>
     </div>
 
     <script>
-        function runTool(toolName) {
-            alert("تم إعطاء صلاحيات الفحص الكاملة للأداة: " + toolName + "\nجاري التنفيذ...");
-            // يتم توجيه النتيجة لصفحة الأمان والتحليل الشامل تلقائياً
-            window.location.href = "security-analysis.html";
+        function executeScan(toolName, type) {
+            const overlay = document.getElementById('terminal-overlay');
+            const logs = document.getElementById('term-logs');
+            overlay.style.display = 'flex';
+            
+            logs.innerHTML = `[+] Starting tool: ${toolName}<br>[+] Connecting to target layers...<br>`;
+            
+            setTimeout(() => {
+                logs.innerHTML += `[+] Bypassing firewalls & extracting data packets...<br>`;
+            }, 700);
+
+            setTimeout(() => {
+                logs.innerHTML += `[+] SALMAN OSINT 🫆: Analysis completed successfully!<br>`;
+            }, 1400);
+
+            // الانتقال التلقائي للصفحة الثانية بعد انتهاء التيرمينال
+            setTimeout(() => {
+                window.location.href = "security-analysis.html";
+            }, 2100);
         }
     </script>
 </body>
